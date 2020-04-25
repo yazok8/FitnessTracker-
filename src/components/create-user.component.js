@@ -6,8 +6,8 @@ export default class CreateUser extends Component{
     constructor(props){
         super(props);
 
-        this.onChangeUsername=this.onChangeUsername.bind(this);
-        this.onSubmit=this.onSubmit.bind(this);
+        // this.onChangeUsername=this.onChangeUsername.bind(this);
+        // this.onSubmit=this.onSubmit.bind(this);
 
         this.state={
             username:"",
@@ -15,13 +15,13 @@ export default class CreateUser extends Component{
         }
     }
 
-    onChangeUsername(e){
+    onChangeUsername=(e)=>{
         this.setState({
             username: e.target.value
         })
     }
 
-    onSubmit(e){
+    onSubmit=(e)=>{
         e.preventDefault();
 
         const user= {
@@ -32,7 +32,7 @@ export default class CreateUser extends Component{
         
         axios.post("http://localhost:5000/users/add",user)
         .then(res=>console.log(res.data))
-        .catch((error) => console.log( error.response.request._response ) );
+        .catch((error) => console.log( error.response.request._response ));
                   
 
         this.setState({
