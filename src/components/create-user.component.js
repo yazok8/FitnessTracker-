@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import axios from "axios";
 
 
 export default class CreateUser extends Component{
@@ -28,6 +29,12 @@ export default class CreateUser extends Component{
         }
 
         console.log(user);
+        
+        axios.post("http://localhost:5000/users/add",user)
+        .then(res=>console.log(res.data))
+        .catch((error) => console.log( error.response.request._response ) );
+                  
+
         this.setState({
             username:""
         })
